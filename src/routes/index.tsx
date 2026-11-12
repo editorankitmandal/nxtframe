@@ -70,19 +70,51 @@ const reels: Reel[] = [
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "NXT Frame — Short-form video editing" },
+      { title: "NXT Frame — Short-form Video Editing Agency for Reels, TikTok & Shorts" },
       {
         name: "description",
         content:
-          "Retention-first Reels, TikToks and Shorts. NXT Frame makes every second count with sharp hooks, kinetic type and sound-led edits.",
+          "NXT Frame is a short-form video editing studio. Retention-first Reels, TikToks and YouTube Shorts with sharp hooks, kinetic type and sound-led edits.",
       },
-      { property: "og:title", content: "NXT Frame — Short-form video editing" },
+      {
+        name: "keywords",
+        content:
+          "short-form video editing, Reels editor, TikTok video editing, YouTube Shorts editing, video editing agency, kinetic typography, creator video editing, NXT Frame",
+      },
+      { property: "og:title", content: "NXT Frame — Short-form Video Editing Agency" },
       {
         property: "og:description",
         content: "Retention-first Reels, TikToks and Shorts. Every second counts.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "/" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "NXT Frame — Short-form Video Editing Agency" },
+      {
+        name: "twitter:description",
+        content: "Retention-first Reels, TikToks and Shorts. Every second counts.",
+      },
+    ],
+    links: [{ rel: "canonical", href: "/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ProfessionalService",
+          name: "NXT Frame",
+          description:
+            "Short-form video editing studio for Reels, TikToks and YouTube Shorts.",
+          email: "Editor.Ankitmandal@gmail.com",
+          serviceType: "Short-form video editing",
+          areaServed: "Worldwide",
+          sameAs: [
+            "https://www.instagram.com/nxt_frame.studio/",
+            "https://www.youtube.com/@NXT-Frame.Studio",
+            "https://www.linkedin.com/company/the-nxt-frame-studio",
+          ],
+        }),
+      },
     ],
   }),
   component: Index,

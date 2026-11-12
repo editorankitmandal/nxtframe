@@ -31,3 +31,4 @@ use the editor.
 
 ## Project architecture
 - Keep NXT Frame's agency site as a single scrolling home page because its requested journey is one lean, punchy flow.
+- Serve sitemap.xml from a server route that builds URLs from the request origin, so it stays correct on any domain without hardcoding one.
