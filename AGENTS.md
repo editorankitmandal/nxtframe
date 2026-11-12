@@ -31,4 +31,5 @@ use the editor.
 
 ## Project architecture
 - Keep NXT Frame's agency site as a single scrolling home page because its requested journey is one lean, punchy flow.
-- Serve sitemap.xml from a server route that builds URLs from the request origin, so it stays correct on any domain without hardcoding one.
+- Build absolute URLs (sitemap.xml route, canonical, og:url, og:image) from the request origin, never a hardcoded domain, because the site is served from both Lovable and Vercel.
+- Ship images, the share image and fonts as real files in src/assets or public (never .asset.json pointers or remote font CSS), because Lovable asset URLs 404 on Vercel and remote fonts block first paint.

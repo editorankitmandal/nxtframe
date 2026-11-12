@@ -12,6 +12,7 @@ import { useEffect, useState, type ReactNode } from "react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 
 import appCss from "../styles.css?url";
+import interLatinFont from "@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
@@ -95,11 +96,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      // Inter is bundled with the site (no Google Fonts round trips); preload the Latin file.
       {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap",
+        rel: "preload",
+        href: interLatinFont,
+        as: "font",
+        type: "font/woff2",
+        crossOrigin: "anonymous",
       },
       {
         rel: "stylesheet",
@@ -130,24 +133,23 @@ function RootShell({ children }: { children: ReactNode }) {
 }
 
 function SitePreloader() {
-  const [phase, setPhase] = useState<"shown" | "exit" | "gone">("shown");
+  const [gone, setGone] = useState(false);
 
+  // The slide-up itself is CSS (starts on first paint). This only removes the element afterwards,
+  // with a fallback in case the animation already ended before the app's scripts loaded.
   useEffect(() => {
-    const startExit = setTimeout(() => setPhase("exit"), 550);
-    const finish = setTimeout(() => setPhase("gone"), 1150);
-    return () => {
-      clearTimeout(startExit);
-      clearTimeout(finish);
-    };
+    const fallback = setTimeout(() => setGone(true), 1000);
+    return () => clearTimeout(fallback);
   }, []);
 
-  if (phase === "gone") return null;
+  if (gone) return null;
 
   return (
     <div
-      className={phase === "exit" ? "preloader preloader--exit" : "preloader"}
+      className="preloader"
       role="status"
       aria-label="Loading NXT Frame"
+      onAnimationEnd={() => setGone(true)}
     >
       <span className="preloader-word">NXT Frame</span>
     </div>

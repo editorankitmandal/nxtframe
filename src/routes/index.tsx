@@ -1,14 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { createIsomorphicFn } from "@tanstack/react-start";
+import { getRequestUrl } from "@tanstack/react-start/server";
 import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, Instagram, Linkedin, Play, Youtube } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import logoMark from "@/assets/nxt-frame-mark.png";
-import goldAward from "@/assets/trail-gold-award.png";
-import headphones from "@/assets/trail-headphones.png";
-import clapper from "@/assets/trail-clapper.png";
-import badge from "@/assets/trail-badge.png";
-import heart from "@/assets/trail-heart.png";
-import views from "@/assets/trail-views.png";
+import logoMark from "@/assets/nxt-frame-mark.webp";
+import goldAward from "@/assets/trail-gold-award.webp";
+import headphones from "@/assets/trail-headphones.webp";
+import clapper from "@/assets/trail-clapper.webp";
+import badge from "@/assets/trail-badge.webp";
+import heart from "@/assets/trail-heart.webp";
+import views from "@/assets/trail-views.webp";
 
 const cursorTrailImages = [goldAward, headphones, clapper, badge, heart, views];
 
@@ -60,8 +62,16 @@ const reels: Reel[] = [
   },
 ];
 
+// Absolute URLs for share previews, built from whichever domain serves the page (Lovable or Vercel).
+const getSiteOrigin = createIsomorphicFn()
+  .server(() => getRequestUrl({ xForwardedHost: true, xForwardedProto: true }).origin)
+  .client(() => window.location.origin);
+
 export const Route = createFileRoute("/")({
-  head: () => ({
+  head: () => {
+    const origin = getSiteOrigin();
+    const shareImage = `${origin}/og-image.jpg`;
+    return {
     meta: [
       { title: "NXT Frame — Short-form Video Editing Agency for Reels, TikTok & Shorts" },
       {
@@ -80,7 +90,12 @@ export const Route = createFileRoute("/")({
         content: "Retention-first Reels, TikToks and Shorts. Every second counts.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/" },
+      { property: "og:url", content: `${origin}/` },
+      { property: "og:image", content: shareImage },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: "NXT Frame — Your story, Our Frame." },
+      { name: "twitter:image", content: shareImage },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "NXT Frame — Short-form Video Editing Agency" },
       {
@@ -88,7 +103,7 @@ export const Route = createFileRoute("/")({
         content: "Retention-first Reels, TikToks and Shorts. Every second counts.",
       },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: `${origin}/` }],
     scripts: [
       {
         type: "application/ld+json",
@@ -109,7 +124,8 @@ export const Route = createFileRoute("/")({
         }),
       },
     ],
-  }),
+    };
+  },
   component: Index,
 });
 
@@ -216,7 +232,7 @@ function Index() {
       <main className="overflow-hidden bg-background font-sans text-foreground">
         <section id="top" className="relative flex min-h-[760px] flex-col items-center justify-center bg-hero-surface px-6 py-24 text-hero-ink md:min-h-[850px]">
           <div className="absolute inset-x-0 top-10 z-10 flex flex-col items-center text-center md:top-12">
-            <img className="size-14 object-contain invert md:size-16" src={logoMark} alt="NXT Frame mark" />
+            <img className="size-14 object-contain invert md:size-16" src={logoMark} alt="NXT Frame mark" width={64} height={64} />
             <p className="mt-2 text-base font-black uppercase">NXT Frame</p>
           </div>
           <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center text-center">
