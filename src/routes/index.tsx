@@ -50,7 +50,7 @@ const reels: Reel[] = [
   },
   {
     label: "The NXT Frame edit",
-    format: "AGENCY SHOWREEL",
+    format: "\n",
     ratio: "horizontal",
     artwork: "showreel-artwork",
     accent: "text-cyan",
@@ -99,7 +99,7 @@ function VideoFrame({ reel }: { reel: Reel }) {
             <span className="play-mark" aria-hidden="true">
               <Play className="ml-1 size-5 fill-current" />
             </span>
-            <span className="video-placeholder-label">YOUTUBE EMBED</span>
+            <span className="video-placeholder-label">{"\n"}</span>
           </div>
         )}
       </div>
