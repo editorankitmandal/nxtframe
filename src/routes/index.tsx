@@ -273,13 +273,13 @@ function Index() {
               Editor.Ankitmandal@gmail.com
             </a>
             <div className="mt-7 flex items-center gap-3" aria-label="Social media">
-              <a className="flex size-11 items-center justify-center border border-background/30 transition-colors hover:bg-cyan hover:text-foreground" href="https://www.instagram.com/" target="_blank" rel="noreferrer" aria-label="Instagram" title="Instagram">
+              <a className="flex size-11 items-center justify-center border border-background/30 transition-colors hover:bg-cyan hover:text-foreground" href="https://www.instagram.com/nxt_frame.studio/" target="_blank" rel="noreferrer" aria-label="Instagram" title="Instagram">
                 <Instagram className="size-5" />
               </a>
-              <a className="flex size-11 items-center justify-center border border-background/30 transition-colors hover:bg-cyan hover:text-foreground" href="https://www.youtube.com/" target="_blank" rel="noreferrer" aria-label="YouTube" title="YouTube">
+              <a className="flex size-11 items-center justify-center border border-background/30 transition-colors hover:bg-cyan hover:text-foreground" href="https://www.youtube.com/@NXT-Frame.Studio" target="_blank" rel="noreferrer" aria-label="YouTube" title="YouTube">
                 <Youtube className="size-5" />
               </a>
-              <a className="flex size-11 items-center justify-center border border-background/30 transition-colors hover:bg-cyan hover:text-foreground" href="https://www.linkedin.com/" target="_blank" rel="noreferrer" aria-label="LinkedIn" title="LinkedIn">
+              <a className="flex size-11 items-center justify-center border border-background/30 transition-colors hover:bg-cyan hover:text-foreground" href="https://www.linkedin.com/company/the-nxt-frame-studio" target="_blank" rel="noreferrer" aria-label="LinkedIn" title="LinkedIn">
                 <Linkedin className="size-5" />
               </a>
             </div>
