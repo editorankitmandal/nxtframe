@@ -2,22 +2,15 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, Instagram, Linkedin, Play, Youtube } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import logoMark from "@/assets/nxt-frame-mark.png.asset.json";
-import goldAward from "@/assets/trail-gold-award.png.asset.json";
-import headphones from "@/assets/trail-headphones.png.asset.json";
-import clapper from "@/assets/trail-clapper.png.asset.json";
-import badge from "@/assets/trail-badge.png.asset.json";
-import heart from "@/assets/trail-heart.png.asset.json";
-import views from "@/assets/trail-views.png.asset.json";
+import logoMark from "@/assets/nxt-frame-mark.png";
+import goldAward from "@/assets/trail-gold-award.png";
+import headphones from "@/assets/trail-headphones.png";
+import clapper from "@/assets/trail-clapper.png";
+import badge from "@/assets/trail-badge.png";
+import heart from "@/assets/trail-heart.png";
+import views from "@/assets/trail-views.png";
 
-const cursorTrailImages = [
-  goldAward.url,
-  headphones.url,
-  clapper.url,
-  badge.url,
-  heart.url,
-  views.url,
-];
+const cursorTrailImages = [goldAward, headphones, clapper, badge, heart, views];
 
 type CursorTrailImage = {
   id: number;
@@ -223,7 +216,7 @@ function Index() {
       <main className="overflow-hidden bg-background font-sans text-foreground">
         <section id="top" className="relative flex min-h-[760px] flex-col items-center justify-center bg-hero-surface px-6 py-24 text-hero-ink md:min-h-[850px]">
           <div className="absolute inset-x-0 top-10 z-10 flex flex-col items-center text-center md:top-12">
-            <img className="size-14 object-contain invert md:size-16" src={logoMark.url} alt="NXT Frame mark" />
+            <img className="size-14 object-contain invert md:size-16" src={logoMark} alt="NXT Frame mark" />
             <p className="mt-2 text-base font-black uppercase">NXT Frame</p>
           </div>
           <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center text-center">
