@@ -7,7 +7,6 @@ import goldAward from "@/assets/trail-gold-award.png.asset.json";
 import headphones from "@/assets/trail-headphones.png.asset.json";
 import clapper from "@/assets/trail-clapper.png.asset.json";
 import badge from "@/assets/trail-badge.png.asset.json";
-import diamond from "@/assets/trail-diamond.png.asset.json";
 import heart from "@/assets/trail-heart.png.asset.json";
 import views from "@/assets/trail-views.png.asset.json";
 
@@ -16,7 +15,6 @@ const cursorTrailImages = [
   headphones.url,
   clapper.url,
   badge.url,
-  diamond.url,
   heart.url,
   views.url,
 ];
