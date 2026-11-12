@@ -276,7 +276,41 @@
   color: var(--primary-foreground);
 }
 
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  background-color: var(--cyan);
+  transition: transform 560ms cubic-bezier(0.65, 0, 0.35, 1);
+  will-change: transform;
+}
+
+.preloader--exit {
+  transform: translateY(-100%);
+  pointer-events: none;
+}
+
+.preloader-word {
+  color: var(--hero-ink);
+  font-size: clamp(2.5rem, 9vw, 6rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .preloader {
+    transition: opacity 150ms ease;
+  }
+
+  .preloader--exit {
+    opacity: 0;
+    transform: none;
+  }
+
   .site-cursor-trail-image {
     animation: none;
     opacity: 0.75;

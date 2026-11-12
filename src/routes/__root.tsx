@@ -8,7 +8,7 @@ import {
   Scripts,
   type ErrorComponentProps,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -123,11 +123,37 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
+function SitePreloader() {
+  const [phase, setPhase] = useState<"shown" | "exit" | "gone">("shown");
+
+  useEffect(() => {
+    const startExit = setTimeout(() => setPhase("exit"), 550);
+    const finish = setTimeout(() => setPhase("gone"), 1150);
+    return () => {
+      clearTimeout(startExit);
+      clearTimeout(finish);
+    };
+  }, []);
+
+  if (phase === "gone") return null;
+
+  return (
+    <div
+      className={phase === "exit" ? "preloader preloader--exit" : "preloader"}
+      role="status"
+      aria-label="Loading NXT Frame"
+    >
+      <span className="preloader-word">NXT Frame</span>
+    </div>
+  );
+}
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
   return (
     <QueryClientProvider client={queryClient}>
+      <SitePreloader />
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
     </QueryClientProvider>
