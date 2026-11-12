@@ -73,6 +73,7 @@
   --color-sidebar-ring: var(--sidebar-ring);
   --color-orange: var(--orange);
   --color-cyan: var(--cyan);
+  --color-navy: var(--navy);
   --color-hero-surface: var(--hero-surface);
   --color-hero-ink: var(--hero-ink);
 }
@@ -83,6 +84,7 @@
   --hero-ink: oklch(0 0 0);
   --orange: oklch(0.677650 0.214724 37.35);
   --cyan: oklch(0.763767 0.149572 230.65);
+  --navy: oklch(0.129850 0.042525 265.1322);
   --background: oklch(1 0 0);
   --foreground: oklch(0.129 0.042 264.695);
   --card: oklch(1 0 0);
@@ -120,6 +122,7 @@
 .dark {
   --orange: oklch(0.677650 0.214724 37.35);
   --cyan: oklch(0.763767 0.149572 230.65);
+  --navy: oklch(0.129850 0.042525 265.1322);
   --background: oklch(0.129 0.042 264.695);
   --foreground: oklch(0.984 0.003 247.858);
   --card: oklch(0.208 0.042 265.755);
@@ -223,7 +226,7 @@
 .showreel-artwork {
   flex-direction: row;
   align-items: center;
-  background-color: var(--cyan);
+  background-color: var(--navy);
 }
 
 .video-format,
@@ -258,8 +261,18 @@
 
 .showreel-artwork .video-title {
   max-width: 9ch;
-  color: var(--primary-foreground);
+  color: var(--cyan);
   font-size: clamp(2rem, 6vw, 5rem);
+}
+
+.showreel-artwork .video-format,
+.showreel-artwork .video-placeholder-label {
+  color: var(--cyan);
+}
+
+.showreel-artwork .play-mark {
+  border-color: var(--cyan);
+  color: var(--cyan);
 }
 
 .play-mark {
