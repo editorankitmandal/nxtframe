@@ -223,7 +223,7 @@
 .showreel-artwork {
   flex-direction: row;
   align-items: center;
-  background-color: var(--orange);
+  background-color: var(--cyan);
 }
 
 .video-format,
