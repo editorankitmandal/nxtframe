@@ -289,6 +289,14 @@ function Index() {
 
       <footer className="flex flex-col justify-between gap-3 bg-foreground px-6 pb-7 text-xs font-semibold uppercase text-background/45 md:flex-row md:px-12">
         <span>© 2026 NXT Frame</span>
+        <a
+          className="text-background/45 transition-colors hover:text-cyan"
+          href="https://princemandalportfolio.vercel.app/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Design by Prince Mandal
+        </a>
         </footer>
       </main>
     </>
