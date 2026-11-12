@@ -213,7 +213,7 @@
 }
 
 .hook-artwork {
-  background-color: var(--foreground);
+  background-color: var(--cyan);
 }
 
 .type-artwork {
@@ -246,6 +246,10 @@
   font-size: clamp(1.4rem, 5vw, 3.4rem);
   font-weight: 950;
   line-height: 0.9;
+}
+
+.hook-artwork .video-title {
+  color: var(--foreground);
 }
 
 .type-artwork .video-title {
