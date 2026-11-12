@@ -29,21 +29,21 @@ type Reel = {
 const reels: Reel[] = [
   {
     label: "The first 3 seconds",
-    format: "REEL / TIKTOK / SHORTS",
+    format: "\n",
     ratio: "vertical",
     artwork: "hook-artwork",
     accent: "text-cyan",
   },
   {
     label: "Made to hold attention",
-    format: "KINETIC TYPE",
+    format: "\n",
     ratio: "vertical",
     artwork: "type-artwork",
     accent: "text-orange",
   },
   {
     label: "The replay effect",
-    format: "CREATOR SHORTS",
+    format: "\n",
     ratio: "vertical",
     artwork: "type-artwork",
     accent: "text-orange",
