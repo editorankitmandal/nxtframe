@@ -185,7 +185,7 @@ function Index() {
             <p className="mt-2 text-base font-black uppercase">NXT Frame</p>
           </div>
           <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center text-center">
-            <h1 className="title-reveal text-5xl font-black leading-[0.82] sm:text-7xl md:text-[100px]">
+            <h1 className="text-5xl font-black leading-[0.82] sm:text-7xl md:text-[100px]">
               Your story,<br />
               <span>Our Frame.</span>
             </h1>
