@@ -6,9 +6,26 @@
  *   src/routes/__root.tsx and name the family in a --font-* token in @theme inline below.
  */
 @import "tailwindcss" source(none);
-@source "../src";
 @import "tw-animate-css";
-@import "@fontsource-variable/inter";
+/*
+ * Only scan files the page renders. The unused shadcn components in src/components/ui would
+ * otherwise roughly double this stylesheet. Add a @source line when a page starts using another
+ * ui component.
+ */
+@source "../src/routes";
+@source "../src/components/ui/button.tsx";
+
+/* Inter, Latin subset only (the site is English); bundled with the site, preloaded in __root. */
+@font-face {
+  font-family: "Inter Variable";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url("../node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2")
+    format("woff2-variations");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304,
+    U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
 
 @custom-variant dark (&:is(.dark *));
 
@@ -301,24 +318,23 @@
   display: grid;
   place-items: center;
   background-color: var(--cyan);
-  /* Pure CSS so the slide starts on first paint instead of waiting for the app's scripts. */
-  animation: preloader-slide-up 480ms cubic-bezier(0.65, 0, 0.35, 1) 380ms both;
+  /* Purely visual: never blocks clicks, so the keyframes only need to animate transform. */
+  pointer-events: none;
+  /* Pure CSS so the slide starts on first paint instead of waiting for the app's scripts.
+     Only transform/opacity are animated so the browser can run it on the GPU. */
+  animation: preloader-slide-up 420ms cubic-bezier(0.65, 0, 0.35, 1) 220ms both;
   will-change: transform;
 }
 
 @keyframes preloader-slide-up {
   to {
     transform: translateY(-100%);
-    visibility: hidden;
-    pointer-events: none;
   }
 }
 
 @keyframes preloader-fade {
   to {
     opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
   }
 }
 
@@ -333,7 +349,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .preloader {
-    animation: preloader-fade 150ms ease 300ms both;
+    animation: preloader-fade 150ms ease 200ms both;
   }
 
   .site-cursor-trail-image {

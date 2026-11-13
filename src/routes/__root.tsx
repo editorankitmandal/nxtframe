@@ -11,7 +11,9 @@ import {
 import { useEffect, useState, type ReactNode } from "react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 
-import appCss from "../styles.css?url";
+// Imported for its side effect so it lands in the build manifest; production inlines it into
+// the HTML (vite.config.ts inlineCss) instead of a render-blocking stylesheet request.
+import "../styles.css";
 import interLatinFont from "@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
@@ -104,10 +106,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         type: "font/woff2",
         crossOrigin: "anonymous",
       },
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
       { rel: "icon", type: "image/png", href: "/favicon.png" },
     ],
   }),
@@ -138,7 +136,7 @@ function SitePreloader() {
   // The slide-up itself is CSS (starts on first paint). This only removes the element afterwards,
   // with a fallback in case the animation already ended before the app's scripts loaded.
   useEffect(() => {
-    const fallback = setTimeout(() => setGone(true), 1000);
+    const fallback = setTimeout(() => setGone(true), 800);
     return () => clearTimeout(fallback);
   }, []);
 
