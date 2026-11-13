@@ -10,6 +10,7 @@ import {
 } from "@tanstack/react-router";
 import { useEffect, useState, type ReactNode } from "react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
+import { Analytics } from "@vercel/analytics/react";
 
 import appCss from "../styles.css?url";
 import interLatinFont from "@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url";
@@ -126,6 +127,7 @@ function RootShell({ children }: { children: ReactNode }) {
       <body>
         {children}
         <SpeedInsights />
+        <Analytics />
         <Scripts />
       </body>
     </html>
