@@ -3,7 +3,6 @@ import { createIsomorphicFn } from "@tanstack/react-start";
 import { getRequestUrl } from "@tanstack/react-start/server";
 import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, Instagram, Linkedin, Play, Youtube } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import logoMark from "@/assets/nxt-frame-mark.webp";
 import goldAward from "@/assets/trail-gold-award.webp";
 import headphones from "@/assets/trail-headphones.webp";
@@ -241,12 +240,12 @@ function Index() {
               <span>Our Frame.</span>
             </h1>
             <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-              <Button asChild className="h-12 rounded-full bg-cyan px-7 text-sm font-black uppercase text-hero-ink hover:bg-cyan/85">
-                <a href="#work">Portfolio</a>
-              </Button>
-              <Button asChild variant="outline" className="h-12 rounded-full border-hero-ink/45 bg-transparent px-7 text-sm font-black uppercase text-hero-ink hover:bg-hero-ink hover:text-hero-surface">
-                <a href="#contact">Contact</a>
-              </Button>
+              <a href="#work" className="inline-flex items-center justify-center gap-2 whitespace-nowrap cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 shadow py-2 h-12 rounded-full bg-cyan px-7 text-sm font-black uppercase text-hero-ink hover:bg-cyan/85">
+                Portfolio
+              </a>
+              <a href="#contact" className="inline-flex items-center justify-center gap-2 whitespace-nowrap cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border shadow-sm py-2 h-12 rounded-full border-hero-ink/45 bg-transparent px-7 text-sm font-black uppercase text-hero-ink hover:bg-hero-ink hover:text-hero-surface">
+                Contact
+              </a>
             </div>
           </div>
           <div className="pointer-events-none absolute bottom-0 left-0 h-2 w-full bg-orange" />
@@ -302,11 +301,9 @@ function Index() {
             <p className="mb-4 text-xs font-bold uppercase text-background/60">03 / Start a conversation</p>
             <h2 className="max-w-3xl text-5xl font-black leading-[0.9] md:text-8xl">Got a good<br />thing going?</h2>
             <p className="mt-7 max-w-md text-lg font-medium text-background/70">Let’s make the next one impossible to scroll past.</p>
-            <Button asChild size="lg" className="mt-9 h-12 rounded-none bg-cyan px-6 text-sm font-black uppercase text-foreground hover:bg-cyan/85">
-              <a href="https://tally.so/r/QoMPrX" target="_blank" rel="noreferrer">
-                Open enquiry form <ArrowUpRight className="size-4" />
-              </a>
-            </Button>
+            <a href="https://tally.so/r/QoMPrX" target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-2 whitespace-nowrap cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 shadow mt-9 h-12 rounded-none bg-cyan px-6 text-sm font-black uppercase text-foreground hover:bg-cyan/85">
+              Open enquiry form <ArrowUpRight className="size-4" />
+            </a>
           </div>
           <div className="border-t border-background/25 pt-6 lg:justify-self-end lg:min-w-64">
             <p className="text-xs font-bold uppercase text-background/55">Email</p>

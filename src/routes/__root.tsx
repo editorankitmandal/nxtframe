@@ -1,22 +1,23 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
   Link,
-  createRootRouteWithContext,
+  createRootRoute,
   useRouter,
   HeadContent,
   Scripts,
   type ErrorComponentProps,
 } from "@tanstack/react-router";
-import { useEffect, useState, type ReactNode } from "react";
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/react";
+import { lazy, Suspense, useEffect, useState, type ReactNode } from "react";
 
 // Imported for its side effect so it lands in the build manifest; production inlines it into
 // the HTML (vite.config.ts inlineCss) instead of a render-blocking stylesheet request.
 import "../styles.css";
 import interLatinFont from "@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+
+// Vercel Analytics + Speed Insights load in their own small file after the page is up, so they
+// aren't part of the first download PageSpeed checks for unused code.
+const VercelInsights = lazy(() => import("../components/vercel-insights"));
 
 function NotFoundComponent() {
   return (
@@ -78,7 +79,7 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
   );
 }
 
-export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
+export const Route = createRootRoute({
   head: () => ({
     // Each content route, / included, still sets its own head(). Never add og:image or
     // twitter:image here: every page without its own would inherit the root's preview image.
@@ -124,8 +125,6 @@ function RootShell({ children }: { children: ReactNode }) {
       </head>
       <body>
         {children}
-        <Analytics />
-        <SpeedInsights />
         <Scripts />
       </body>
     </html>
@@ -156,14 +155,29 @@ function SitePreloader() {
   );
 }
 
-function RootComponent() {
-  const { queryClient } = Route.useRouteContext();
+function DeferredInsights() {
+  const [ready, setReady] = useState(false);
 
+  useEffect(() => {
+    const idle = window.requestIdleCallback ?? ((cb: () => void) => window.setTimeout(cb, 1500));
+    idle(() => setReady(true));
+  }, []);
+
+  if (!ready) return null;
   return (
-    <QueryClientProvider client={queryClient}>
+    <Suspense fallback={null}>
+      <VercelInsights />
+    </Suspense>
+  );
+}
+
+function RootComponent() {
+  return (
+    <>
       <SitePreloader />
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
-    </QueryClientProvider>
+      <DeferredInsights />
+    </>
   );
 }
