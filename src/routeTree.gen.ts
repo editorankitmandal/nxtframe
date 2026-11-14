@@ -10,11 +10,48 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as InstagramReelsEditingRouteImport } from './routes/instagram-reels-editing'
+import { Route as PodcastVideoEditingRouteImport } from './routes/podcast-video-editing'
+import { Route as PortfolioRouteImport } from './routes/portfolio'
+import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as YoutubeShortsEditingRouteImport } from './routes/youtube-shorts-editing'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InstagramReelsEditingRoute = InstagramReelsEditingRouteImport.update({
+  id: '/instagram-reels-editing',
+  path: '/instagram-reels-editing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PodcastVideoEditingRoute = PodcastVideoEditingRouteImport.update({
+  id: '/podcast-video-editing',
+  path: '/podcast-video-editing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PortfolioRoute = PortfolioRouteImport.update({
+  id: '/portfolio',
+  path: '/portfolio',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -22,31 +59,92 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
+const YoutubeShortsEditingRoute = YoutubeShortsEditingRouteImport.update({
+  id: '/youtube-shorts-editing',
+  path: '/youtube-shorts-editing',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/instagram-reels-editing': typeof InstagramReelsEditingRoute
+  '/podcast-video-editing': typeof PodcastVideoEditingRoute
+  '/portfolio': typeof PortfolioRoute
+  '/pricing': typeof PricingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/youtube-shorts-editing': typeof YoutubeShortsEditingRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/instagram-reels-editing': typeof InstagramReelsEditingRoute
+  '/podcast-video-editing': typeof PodcastVideoEditingRoute
+  '/portfolio': typeof PortfolioRoute
+  '/pricing': typeof PricingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/youtube-shorts-editing': typeof YoutubeShortsEditingRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/instagram-reels-editing': typeof InstagramReelsEditingRoute
+  '/podcast-video-editing': typeof PodcastVideoEditingRoute
+  '/portfolio': typeof PortfolioRoute
+  '/pricing': typeof PricingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/youtube-shorts-editing': typeof YoutubeShortsEditingRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/sitemap.xml'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/instagram-reels-editing'
+    | '/podcast-video-editing'
+    | '/portfolio'
+    | '/pricing'
+    | '/sitemap.xml'
+    | '/youtube-shorts-editing'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/sitemap.xml'
-  id: '__root__' | '/' | '/sitemap.xml'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/instagram-reels-editing'
+    | '/podcast-video-editing'
+    | '/portfolio'
+    | '/pricing'
+    | '/sitemap.xml'
+    | '/youtube-shorts-editing'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/instagram-reels-editing'
+    | '/podcast-video-editing'
+    | '/portfolio'
+    | '/pricing'
+    | '/sitemap.xml'
+    | '/youtube-shorts-editing'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  ContactRoute: typeof ContactRoute
+  InstagramReelsEditingRoute: typeof InstagramReelsEditingRoute
+  PodcastVideoEditingRoute: typeof PodcastVideoEditingRoute
+  PortfolioRoute: typeof PortfolioRoute
+  PricingRoute: typeof PricingRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  YoutubeShortsEditingRoute: typeof YoutubeShortsEditingRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -58,6 +156,48 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/instagram-reels-editing': {
+      id: '/instagram-reels-editing'
+      path: '/instagram-reels-editing'
+      fullPath: '/instagram-reels-editing'
+      preLoaderRoute: typeof InstagramReelsEditingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/podcast-video-editing': {
+      id: '/podcast-video-editing'
+      path: '/podcast-video-editing'
+      fullPath: '/podcast-video-editing'
+      preLoaderRoute: typeof PodcastVideoEditingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/portfolio': {
+      id: '/portfolio'
+      path: '/portfolio'
+      fullPath: '/portfolio'
+      preLoaderRoute: typeof PortfolioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
@@ -65,12 +205,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/youtube-shorts-editing': {
+      id: '/youtube-shorts-editing'
+      path: '/youtube-shorts-editing'
+      fullPath: '/youtube-shorts-editing'
+      preLoaderRoute: typeof YoutubeShortsEditingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  ContactRoute: ContactRoute,
+  InstagramReelsEditingRoute: InstagramReelsEditingRoute,
+  PodcastVideoEditingRoute: PodcastVideoEditingRoute,
+  PortfolioRoute: PortfolioRoute,
+  PricingRoute: PricingRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  YoutubeShortsEditingRoute: YoutubeShortsEditingRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
