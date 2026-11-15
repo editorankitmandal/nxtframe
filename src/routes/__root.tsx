@@ -16,6 +16,7 @@ import interLatinFont from "@fontsource-variable/inter/files/inter-latin-wght-no
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SiteCursorTrail } from "../components/site/cursor-trail";
 import { SiteFooter } from "../components/site/site-footer";
+import { FloatingMenu } from "../components/site/floating-menu";
 
 // Vercel Analytics + Speed Insights load in their own small file after the page is up, so they
 // aren't part of the first download PageSpeed checks for unused code.
@@ -181,6 +182,7 @@ function RootComponent() {
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
       <SiteFooter />
+      <FloatingMenu />
       <DeferredInsights />
     </>
   );
