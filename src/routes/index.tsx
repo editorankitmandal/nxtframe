@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
+import logoMark from "@/assets/nxt-frame-mark.webp";
 import { ContactBlock } from "@/components/site/contact-block";
 import { ReelGrid } from "@/components/site/reels";
 import { SERVICE_PAGES, SOCIAL_LINKS, CONTACT_EMAIL, buttonCyan, buttonOutlineInk, getSiteOrigin } from "@/lib/site";
@@ -65,7 +66,11 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <main className="overflow-hidden bg-background font-sans text-foreground">
-      <section id="top" className="relative flex min-h-[620px] flex-col items-center justify-center bg-hero-surface px-6 pb-24 pt-12 text-hero-ink md:min-h-[740px]">
+      <section id="top" className="relative flex min-h-[760px] flex-col items-center justify-center bg-hero-surface px-6 py-24 text-hero-ink md:min-h-[850px]">
+        <div className="absolute inset-x-0 top-10 z-10 flex flex-col items-center text-center md:top-12">
+          <img className="size-14 object-contain invert md:size-16" src={logoMark} alt="NXT Frame mark" width={64} height={64} fetchPriority="high" />
+          <p className="mt-2 text-base font-black uppercase">NXT Frame</p>
+        </div>
         <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center text-center">
           <h1 className="text-5xl font-black leading-[0.82] sm:text-7xl md:text-[100px]">
             Your story,<br />
