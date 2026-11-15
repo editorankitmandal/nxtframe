@@ -14,6 +14,7 @@ export const reels: Reel[] = [
     label: "The first 3 seconds",
     format: "\n",
     ratio: "vertical",
+    videoId: "C7faQ4jUMXg",
     artwork: "hook-artwork",
     accent: "text-cyan",
   },
