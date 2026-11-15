@@ -54,8 +54,8 @@ export function FloatingMenu() {
 
   return (
     <div
-      className={`fixed inset-x-0 bottom-4 z-50 flex justify-center px-2 transition-[transform,opacity] duration-300 ease-out sm:bottom-6 ${
-        visible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-24 opacity-0"
+      className={`fixed inset-x-0 bottom-4 z-50 flex justify-center px-2 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none sm:bottom-6 ${
+        visible ? "translate-y-0" : "pointer-events-none translate-y-[calc(100%+2rem)]"
       }`}
     >
       <nav
