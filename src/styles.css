@@ -13,6 +13,8 @@
  * ui component.
  */
 @source "../src/routes";
+@source "../src/components/site";
+@source "../src/lib/site.ts";
 
 /* Inter, Latin subset only (the site is English); bundled with the site, preloaded in __root. */
 @font-face {

@@ -32,6 +32,8 @@ export function SiteHeader() {
                     to={page.to}
                     className="block px-4 py-3 text-sm font-bold transition-colors hover:bg-cyan"
                     activeProps={{ className: "bg-cyan" }}
+                    // Drop focus so the menu closes once the pointer leaves after navigating.
+                    onClick={(event) => event.currentTarget.blur()}
                   >
                     {page.label}
                   </Link>

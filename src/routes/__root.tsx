@@ -14,6 +14,9 @@ import { lazy, Suspense, useEffect, useState, type ReactNode } from "react";
 import "../styles.css";
 import interLatinFont from "@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { SiteCursorTrail } from "../components/site/cursor-trail";
+import { SiteFooter } from "../components/site/site-footer";
+import { SiteHeader } from "../components/site/site-header";
 
 // Vercel Analytics + Speed Insights load in their own small file after the page is up, so they
 // aren't part of the first download PageSpeed checks for unused code.
@@ -175,8 +178,11 @@ function RootComponent() {
   return (
     <>
       <SitePreloader />
+      <SiteCursorTrail />
+      <SiteHeader />
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
+      <SiteFooter />
       <DeferredInsights />
     </>
   );
