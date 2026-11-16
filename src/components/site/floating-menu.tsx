@@ -54,12 +54,12 @@ export function FloatingMenu() {
 
   return (
     <div
-      className={`fixed inset-x-0 bottom-4 z-50 flex justify-center px-2 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none sm:bottom-6 ${
-        visible ? "translate-y-0" : "pointer-events-none translate-y-[calc(100%+2rem)]"
+      className={`pointer-events-none fixed inset-x-0 bottom-4 z-50 flex justify-center px-2 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none sm:bottom-6 ${
+        visible ? "translate-y-0" : "translate-y-[calc(100%+2rem)]"
       }`}
     >
       <nav
-        className="relative flex max-w-full items-center rounded-full border border-background/15 bg-navy p-1 text-background shadow-2xl"
+        className="pointer-events-auto relative flex max-w-full items-center rounded-full border border-background/15 bg-navy p-1 text-background shadow-2xl"
         aria-label="Main navigation"
       >
         {menuPages.map((page) => (

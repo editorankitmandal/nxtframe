@@ -74,10 +74,10 @@ function VideoFrame({ reel }: { reel: Reel }) {
   );
 }
 
-export function ReelGrid() {
+export function ReelGrid({ verticalOnly = false }: { verticalOnly?: boolean }) {
   return (
     <div className="grid grid-cols-2 items-start gap-x-4 gap-y-10 md:grid-cols-12 md:gap-x-6 md:gap-y-12">
-      {reels.map((reel) => (
+      {reels.filter((reel) => !verticalOnly || reel.ratio === "vertical").map((reel) => (
         <VideoFrame key={reel.label} reel={reel} />
       ))}
     </div>

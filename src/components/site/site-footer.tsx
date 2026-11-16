@@ -68,7 +68,7 @@ export function SiteFooter() {
       <div className="mx-auto mt-14 flex max-w-7xl flex-col justify-between gap-3 border-t border-background/15 py-7 text-xs font-semibold uppercase text-background/45 md:flex-row">
         <span>© 2026 NXT Frame</span>
         <a
-          className="text-background/45 transition-colors hover:text-cyan"
+          className="text-background/45 underline underline-offset-4 transition-colors hover:text-cyan"
           href="https://princemandalportfolio.vercel.app/"
           target="_blank"
           rel="noreferrer"

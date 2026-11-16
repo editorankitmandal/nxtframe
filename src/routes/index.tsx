@@ -3,6 +3,8 @@ import { ArrowUpRight } from "lucide-react";
 import logoMark from "@/assets/nxt-frame-mark.webp";
 import { ContactBlock } from "@/components/site/contact-block";
 import { ReelGrid } from "@/components/site/reels";
+import { HeroScroll } from "@/components/site/hero-scroll";
+import { HorizontalSections } from "@/components/site/horizontal-sections";
 import { SERVICE_PAGES, SOCIAL_LINKS, CONTACT_EMAIL, buttonCyan, buttonOutlineInk, getSiteOrigin } from "@/lib/site";
 
 export const Route = createFileRoute("/")({
@@ -65,8 +67,9 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <main className="overflow-hidden bg-background font-sans text-foreground">
-      <section id="top" className="relative flex min-h-[760px] flex-col items-center justify-center bg-hero-surface px-6 py-24 text-hero-ink md:min-h-[850px]">
+    <main className="overflow-clip bg-background font-sans text-foreground">
+      <HeroScroll>
+      <section id="top" className="relative flex h-full flex-col items-center justify-center bg-hero-surface px-6 py-24 text-hero-ink">
         <div className="absolute inset-x-0 top-10 z-10 flex flex-col items-center text-center md:top-12">
           <img className="size-14 object-contain invert md:size-16" src={logoMark} alt="NXT Frame mark" width={64} height={64} fetchPriority="high" />
           <p className="mt-2 text-base font-black uppercase">NXT Frame</p>
@@ -85,28 +88,27 @@ function Index() {
             </Link>
           </div>
         </div>
-        <div className="pointer-events-none absolute bottom-0 left-0 h-2 w-full bg-orange" />
+        <div className="pointer-events-none absolute bottom-0 left-0 h-2 w-full bg-cyan" />
       </section>
+      </HeroScroll>
 
-      <section id="work" className="bg-orange px-6 py-24 text-foreground md:px-12 md:py-32">
+      <HorizontalSections>
+      <section id="work" className="horizontal-panel bg-orange px-6 py-24 text-foreground md:px-12 md:py-32">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-14 flex flex-col justify-between gap-8 md:mb-20 md:flex-row md:items-end">
+          <div className="mb-14 flex flex-wrap items-end justify-between gap-6 md:mb-20">
             <div>
               <p className="mb-4 text-xs font-bold uppercase text-primary-foreground/65">01 / Selected work</p>
               <h2 className="max-w-3xl text-5xl font-black leading-[0.9] md:text-7xl">Made for the<br />full-screen era.</h2>
             </div>
-            <p className="max-w-xs text-base font-medium leading-relaxed text-primary-foreground/75">
-              Vertical-first edits, cut with a clear point of view and built to earn the next second.
-            </p>
+            <Link to="/portfolio" className="inline-flex items-center gap-2 text-sm font-black uppercase underline decoration-2 underline-offset-8 hover:opacity-70">
+              See the full portfolio <ArrowUpRight className="size-4" />
+            </Link>
           </div>
-          <ReelGrid />
-          <Link to="/portfolio" className="mt-12 inline-flex items-center gap-2 text-sm font-black uppercase underline decoration-2 underline-offset-8 hover:opacity-70">
-            See the full portfolio <ArrowUpRight className="size-4" />
-          </Link>
+          <ReelGrid verticalOnly />
         </div>
       </section>
 
-      <section id="specialties" className="bg-cyan px-6 py-24 text-foreground md:px-12 md:py-32">
+      <section id="specialties" className="horizontal-panel bg-cyan px-6 py-24 text-foreground md:px-12 md:py-32">
         <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-24">
           <div>
             <p className="mb-4 text-xs font-bold uppercase">02 / What we do</p>
@@ -140,7 +142,31 @@ function Index() {
         </div>
       </section>
 
-      <ContactBlock eyebrow="03 / Start a conversation" />
+      <div className="horizontal-panel horizontal-contact">
+        <ContactBlock eyebrow="03 / Start a conversation" />
+      </div>
+      </HorizontalSections>
+
+      <section
+        className="brand-glow"
+        aria-label="NXT Frame"
+        onMouseMove={(event) => {
+          const heading = event.currentTarget.querySelector("h2");
+          if (!heading) return;
+          const rect = heading.getBoundingClientRect();
+          heading.style.setProperty("--gx", `${event.clientX - rect.left}px`);
+          heading.style.setProperty("--gy", `${event.clientY - rect.top}px`);
+        }}
+        onMouseLeave={(event) => {
+          const heading = event.currentTarget.querySelector("h2");
+          heading?.style.setProperty("--gx", "-1000px");
+        }}
+      >
+        <h2>
+          <span className="brand-glow-base">NXT FRAME</span>
+          <span className="brand-glow-lit" aria-hidden="true">NXT FRAME</span>
+        </h2>
+      </section>
     </main>
   );
 }
