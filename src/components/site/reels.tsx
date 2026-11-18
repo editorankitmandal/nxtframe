@@ -4,7 +4,7 @@ type Reel = {
   label: string;
   format: string;
   ratio: "vertical" | "horizontal";
-  videoId?: string;
+  embedUrl?: string;
   artwork: string;
   accent: string;
 };
@@ -14,7 +14,7 @@ export const reels: Reel[] = [
     label: "The first 3 seconds",
     format: "\n",
     ratio: "vertical",
-    videoId: "C7faQ4jUMXg",
+    embedUrl: "https://www.instagram.com/p/Dfw5aZBSDxs/embed",
     artwork: "hook-artwork",
     accent: "text-cyan",
   },
@@ -22,6 +22,7 @@ export const reels: Reel[] = [
     label: "Made to hold attention",
     format: "\n",
     ratio: "vertical",
+    embedUrl: "https://www.instagram.com/p/Df4hW05S5xz/embed",
     artwork: "type-artwork",
     accent: "text-orange",
   },
@@ -29,6 +30,7 @@ export const reels: Reel[] = [
     label: "The replay effect",
     format: "\n",
     ratio: "vertical",
+    embedUrl: "https://www.instagram.com/p/Df4hccJSyvz/embed",
     artwork: "type-artwork",
     accent: "text-orange",
   },
@@ -47,12 +49,13 @@ function VideoFrame({ reel }: { reel: Reel }) {
       <div
         className={`video-frame ${reel.ratio === "vertical" ? "aspect-[9/16]" : "aspect-video"}`}
       >
-        {reel.videoId ? (
+        {reel.embedUrl ? (
           <iframe
             className="absolute inset-0 h-full w-full"
-            src={`https://www.youtube-nocookie.com/embed/${encodeURIComponent(reel.videoId)}`}
+            src={reel.embedUrl}
             title={reel.label}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            loading="lazy"
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
             allowFullScreen
           />
         ) : (
