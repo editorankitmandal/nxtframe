@@ -27,7 +27,7 @@ export const reels: Reel[] = [
     accent: "text-orange",
   },
   {
-    label: "The replay effect",
+    label: "GRAPHICAL EDIT",
     format: "\n",
     ratio: "vertical",
     embedUrl: "https://www.youtube-nocookie.com/embed/C7faQ4jUMXg",
